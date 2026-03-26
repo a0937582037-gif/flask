@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>次方與根號計算</h2>
+
+<form method="post">
+    x: <input type="number" name="x"><br><br>
+    運算:
+    <select name="opt">
+        <option value="∧">次方</option>
+        <option value="√">根號</option>
+    </select><br><br>
+    y: <input type="number" name="y"><br><br>
+
+    <input type="submit" value="計算">
+</form>
+
+<h3 style="color:red;">{{ result }}</h3> <!-- 🔴結果紅字 -->
+</body>
+</html>

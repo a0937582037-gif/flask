@@ -10,6 +10,7 @@ def index():
     link += "<a href=/welcome?u=旆慈&d=靜宜資管&c=資訊管理導論>Get傳直</a><hr>"
     link += "<a href=/account>Poste傳值</a><hr>"
     link += "<a href=/about>關於我</a><hr>"
+    link += "<a href=/calc>次方與根號計算</a><hr>"
     return link
 @app.route("/mis")
 def course():
@@ -39,6 +40,25 @@ def account():
         return result
     else:
         return render_template("account.html")
+@app.route("/calc", methods=["GET", "POST"])
+def calc():
+    if request.method == "POST":
+        x = float(request.form["x"])
+        y = float(request.form["y"])
+        opt = request.form["opt"]
+
+        if opt == "∧":
+            result = x ** y
+        elif opt == "√":
+            if y == 0:
+                result = "數學不能開0次根號"
+            else:
+                result = x ** (1/y)
+        else:
+            result = "請輸入∧或√"
+
+        return render_template("calc.html", result=result)
+    return render_template("calc.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
